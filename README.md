@@ -1,3 +1,3 @@
 # Think Like a Programmer Scripts
 
-I created several scripts based on the book [Think Like a Programmer](https://upload.wikimedia.org/wikipedia/commons/1/1d/Dragon_Curve_Unfolding.gif).
+I created several scripts based on the book [Think Like a Programmer](https://www.amazon.com/Think-Like-Programmer-Introduction-Creative/dp/1593274246).
