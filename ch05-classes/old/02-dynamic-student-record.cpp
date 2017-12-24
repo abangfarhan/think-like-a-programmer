@@ -158,7 +158,6 @@ void studentCollection::deleteList(studentList &listPtr) {
 studentCollection::~studentCollection() {
     deleteList(_listHead);
     std::cout << "Class Deleted" << std::endl;
-    // TODO check with GDB that the nodes are actually deleted
 }
 
 int main() {
