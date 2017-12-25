@@ -11,8 +11,6 @@ typedef treeNode * treePtr;
 
 bool isBinaryHeap(treePtr rootPtr) {
     if (rootPtr == NULL) return true;
-    // if (rootPtr->left == NULL && rootPtr->right == NULL)
-    //     return true;
     bool isHighest = true;
     bool isHighestLeft = true;
     bool isHighestRight = true;
@@ -27,11 +25,6 @@ bool isBinaryHeap(treePtr rootPtr) {
         isHighestRight = isBinaryHeap(rootPtr->right);
     }
      return (isHighest && isHighestLeft && isHighestRight);
-    // if (rootPtr->data < rootPtr->left->data) isHighest = false;
-    // if (rootPtr->data < rootPtr->right->data) isHighest = false;
-    // bool isHighestLeft = isBinaryHeap(rootPtr->left);
-    // bool isHighestRight = isBinaryHeap(rootPtr->right);
-    // return (isHighest && isHighestLeft && isHighestRight);
 }
 
 bool isBinarySearch(treePtr rootPtr) {
@@ -61,18 +54,30 @@ void unravelTree(treePtr rootPtr) {
         unravelTree(rootPtr->right);
 }
 
-void searchTreeAddNum(treePtr rootPtr, int newNum) {
-    //
+void searchTreeAddNum(treePtr & rootPtr, int newNum) {
+    if (rootPtr == NULL) {
+        rootPtr = new treeNode;
+        rootPtr->data = newNum;
+        rootPtr->left = NULL;
+        rootPtr->right = NULL;
+        return;
+    }
+    if (newNum < rootPtr->data)
+        searchTreeAddNum(rootPtr->left, newNum);
+    else
+        searchTreeAddNum(rootPtr->right, newNum);
 }
 
 int main() {
     treeNode * node1 = new treeNode;
     treeNode * node2 = new treeNode;
     treeNode * node3 = new treeNode;
+    treeNode * node4 = new treeNode;
 
-    node1->data = 30;
+    node1->data = 20;
     node2->data = 15;
-    node3->data = 40;
+    node3->data = 30;
+    node4->data = 40;
 
     treePtr rootPtr = node1;
     node1->left = node2;
@@ -80,12 +85,17 @@ int main() {
     node2->left = NULL;
     node2->right = NULL;
     node3->left = NULL;
-    node3->right = NULL;
-    node1 = node2 = node3 = NULL;
+    node3->right = node4;
+    node4->left = NULL;
+    node4->right = NULL;
+    node1 = node2 = node3 = node4 = NULL;
 
     std::cout << isBinaryHeap(rootPtr) << std::endl;
     std::cout << isBinarySearch(rootPtr) << std::endl;
 
+    unravelTree(rootPtr);
+    std::cout << std::endl;
+    searchTreeAddNum(rootPtr, 50);
     unravelTree(rootPtr);
     std::cout << std::endl;
 }
