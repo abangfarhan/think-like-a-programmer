@@ -1,4 +1,5 @@
 // Exercise 6.9, 6.10 and 6.11
+// Node can be degenerate
 #include <iostream>
 
 struct treeNode {
@@ -10,26 +11,54 @@ typedef treeNode * treePtr;
 
 bool isBinaryHeap(treePtr rootPtr) {
     if (rootPtr == NULL) return true;
-    if (rootPtr->left == NULL && rootPtr->right == NULL)
-        return true;
+    // if (rootPtr->left == NULL && rootPtr->right == NULL)
+    //     return true;
     bool isHighest = true;
-    if (rootPtr->data < rootPtr->left->data) isHighest = false;
-    if (rootPtr->data < rootPtr->right->data) isHighest = false;
-    bool isHighestLeft = isBinaryHeap(rootPtr->left);
-    bool isHighestRight = isBinaryHeap(rootPtr->right);
-    return (isHighest && isHighestLeft && isHighestRight);
+    bool isHighestLeft = true;
+    bool isHighestRight = true;
+    if (rootPtr->left != NULL) {
+        if (rootPtr->left->data > rootPtr->data)
+            isHighest = false;
+        isHighestLeft = isBinaryHeap(rootPtr->left);
+    }
+    if (rootPtr->right != NULL) {
+        if (rootPtr->right->data > rootPtr->data)
+            isHighest = false;
+        isHighestRight = isBinaryHeap(rootPtr->right);
+    }
+     return (isHighest && isHighestLeft && isHighestRight);
+    // if (rootPtr->data < rootPtr->left->data) isHighest = false;
+    // if (rootPtr->data < rootPtr->right->data) isHighest = false;
+    // bool isHighestLeft = isBinaryHeap(rootPtr->left);
+    // bool isHighestRight = isBinaryHeap(rootPtr->right);
+    // return (isHighest && isHighestLeft && isHighestRight);
 }
 
 bool isBinarySearch(treePtr rootPtr) {
     if (rootPtr == NULL) return true;
-    if (rootPtr->left == NULL && rootPtr->right == NULL)
-        return true;
-    bool isSearchNode = true;
-    if (rootPtr->data < rootPtr->left->data) isSearchNode = false;
-    if (rootPtr->data > rootPtr->right->data) isSearchNode = false;
-    bool isSearchLeft = isBinaryHeap(rootPtr->left);
-    bool isSearchRight = isBinaryHeap(rootPtr->right);
-    return (isSearchNode && isSearchLeft && isSearchRight);
+    bool isNodeSearch = true;
+    bool isNodeSearchLeft = true;
+    bool isNodeSearchRight = true;
+    if (rootPtr->left != NULL) {
+        if (rootPtr->left->data > rootPtr->data)
+            isNodeSearch = false;
+        isNodeSearchLeft = isBinarySearch(rootPtr->left);
+    }
+    if (rootPtr->right != NULL) {
+        if (rootPtr->right->data < rootPtr->data)
+            isNodeSearch = false;
+        isNodeSearchRight = isBinarySearch(rootPtr->right);
+    }
+    return (isNodeSearch && isNodeSearchLeft && isNodeSearchRight);
+}
+
+void unravelTree(treePtr rootPtr) {
+    if (rootPtr == NULL) return;
+    if (rootPtr->left != NULL)
+        unravelTree(rootPtr->left);
+    std::cout << rootPtr->data << ' ';
+    if (rootPtr->right != NULL)
+        unravelTree(rootPtr->right);
 }
 
 void searchTreeAddNum(treePtr rootPtr, int newNum) {
@@ -56,4 +85,7 @@ int main() {
 
     std::cout << isBinaryHeap(rootPtr) << std::endl;
     std::cout << isBinarySearch(rootPtr) << std::endl;
+
+    unravelTree(rootPtr);
+    std::cout << std::endl;
 }
