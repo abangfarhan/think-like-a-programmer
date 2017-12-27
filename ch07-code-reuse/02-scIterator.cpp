@@ -21,3 +21,9 @@ studentRecord scIterator::student() {
         return currentIterator->studentData;
     }
 }
+
+// can only be defined here, because now both the
+// studentCollection and scIterator classes have been declared completely
+scIterator studentCollection::firstItemIterator() {
+    return scIterator(_listHead);
+}

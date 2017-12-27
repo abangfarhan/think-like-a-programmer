@@ -14,7 +14,7 @@ typedef bool (* firstStudentPolicy)(studentRecord r1, studentRecord r2);
 // see https://stackoverflow.com/questions/625799/resolve-build-errors-due-to-circular-dependency-amongst-classes
 // however, we still cannot define the firstItemIterator method on
 // 01-student-collection.cpp since it requires full use of scIterator class
-// thus we define it on the main project file (02-student-traversal.cpp)
+// thus we define it on the scIterator.cpp
 class scIterator;
 
 class studentCollection {

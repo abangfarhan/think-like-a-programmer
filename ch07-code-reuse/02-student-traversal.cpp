@@ -4,11 +4,9 @@
 #include "01-student-collection.h"
 #include "02-scIterator.h"
 
-// can only be defined here, because now both the
-// studentCollection and scIterator classes have been declared completely
-scIterator studentCollection::firstItemIterator() {
-    return scIterator(_listHead);
-}
+// scIterator studentCollection::firstItemIterator() {
+//     return scIterator(_listHead);
+// }
 
 int main() {
     studentRecord s1(90, 1001, "Mike");
