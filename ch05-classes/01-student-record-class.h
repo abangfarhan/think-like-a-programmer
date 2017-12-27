@@ -1,7 +1,7 @@
 #ifndef STUDENT_RECORD_H
 #define STUDENT_RECORD_H
 
-//#include <string>
+#include <string>
 
 struct student {
     int grade;
