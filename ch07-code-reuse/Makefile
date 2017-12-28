@@ -21,3 +21,9 @@ CXXFLAGS = --std=c++11
 
 02-scIterator.o: 02-scIterator.cpp 02-scIterator.h 01-student-collection.h ../ch05-classes/01-student-record-class.h 01-student-collection.h
 	$(CXX) $(CXXFLAGS) -c 02-scIterator.cpp
+
+03-sort-student-records: 03-sort-student-records.o 01-student-record-class.o
+	$(CXX) $(CXXFLAGS) -o 03-sort-student-records 03-sort-student-records.o 01-student-record-class.o
+
+03-sort-student-records.o: 03-sort-student-records.cpp ../ch05-classes/01-student-record-class.h
+	$(CXX) $(CXXFLAGS) -c 03-sort-student-records.cpp
