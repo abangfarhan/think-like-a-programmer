@@ -5,6 +5,7 @@
 #include <string.h> // necessary for strcmp
 #include "01-student-record-class.h"
 
+enum Comparator { highestGrade, lowestStudentNumber, firstName };
 class scIterator;
 
 class studentCollection {
@@ -22,7 +23,7 @@ class studentCollection {
     studentRecord recordWithNumber(int idNum);
     void removeRecord(int idNum);
     studentCollection& operator=(const studentCollection & rhs);
-    void setFirstStudentPolicy(int selection);
+    void setFirstStudentPolicy(Comparator comparator);
     studentRecord firstStudent();
     studentRecord recordAt(int position);
     friend class scIterator;

@@ -109,12 +109,12 @@ void studentCollection::_setFirstStudentPolicy(firstStudentPolicy f) {
     _currentPolicy = f;
 }
 
-void studentCollection::setFirstStudentPolicy(int selection) {
-    if (selection == 0)
+void studentCollection::setFirstStudentPolicy(Comparator comparator) {
+    if (comparator == highestGrade)
         _setFirstStudentPolicy(&_higherGrade);
-    else if (selection == 1)
+    else if (comparator == lowestStudentNumber)
         _setFirstStudentPolicy(&_lowerStudentNumber);
-    else if (selection == 2)
+    else if (comparator == firstName)
         _setFirstStudentPolicy(&_nameComesFirst);
 }
 
