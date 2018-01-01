@@ -8,13 +8,16 @@ struct listNode {
 typedef listNode * studentCollection;
 
 void showNodes(studentCollection sc) {
-    listNode * node = sc;
-    int i = 0;
-    while (node != NULL) {
+    for (listNode * node = sc; node != NULL; node = node->next) {
         std::cout << node->studentNum << ':' << node->grade << std::endl;
-        node = node->next;
-        i++;
     }
+    // listNode * node = sc;
+    // int i = 0;
+    // while (node != NULL) {
+    //     std::cout << node->studentNum << ':' << node->grade << std::endl;
+    //     node = node->next;
+    //     i++;
+    // }
 }
 
 void addRecord(studentCollection &sc, int studentNum, int grade) {
