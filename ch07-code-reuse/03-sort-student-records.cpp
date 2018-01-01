@@ -31,7 +31,7 @@ int main() {
         printf("%d \n", records[i].grade());
     printf("\n");
 
-    // insertion sort based on grade
+    // 1. Insertion sort based on grade
     // int start = 0;
     // int end = arraySize - 1;
     // for (int i = start+1; i <= end; i++) {
@@ -42,10 +42,11 @@ int main() {
     //     }
     // }
 
+    // printing the records
     // for (int i = 0; i < arraySize; i++)
     //     printf("%d \n", records[i].grade());
 
-    // insertion sort, ignoring 0-grades
+    // 2. Insertion sort, ignoring 0-grades
     // int start = 0;
     // int end = arraySize - 1;
     // for (int i = start+1; i <= end; i++)
@@ -70,11 +71,12 @@ int main() {
     //     }
     // }
 
+    // printing the records
     // for (int i = 0; i < arraySize; i++)
     //     printf("%d \n", records[i].grade());
     // printf("\n");
 
-    // using qsort
+    // 3. Using qsort
     studentRecord sortArray[arraySize];
     int arrayCount = 0;
     for (int i = 0; i < arraySize; i++) {
