@@ -22,7 +22,7 @@ studentRecord getByStudentNum(studentRecord records[], int arraySize, int studen
     // Interpolation Search
     int low = 0;
     int high = arraySize - 1;
-    int mid;
+    int mid = -1;
     while ((copiedRecords[high].studentID() != copiedRecords[low].studentID()) &&
            (studentNum >= copiedRecords[low].studentID()) &&
            (studentNum <= copiedRecords[high].studentID()))
@@ -36,9 +36,7 @@ studentRecord getByStudentNum(studentRecord records[], int arraySize, int studen
             break;
     }
 
-    if (studentNum >= copiedRecords[0].studentID() &&
-            studentNum <= copiedRecords[arraySize-1].studentID() &&
-            studentNum == copiedRecords[mid].studentID())
+    if (mid != -1 && studentNum == copiedRecords[mid].studentID())
         return copiedRecords[mid];
     else {
         studentRecord dummyRecord;
